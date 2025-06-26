@@ -18,11 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <QueryProvider>
-        <ClerkProvider
-          localization={ptBR}
-          publishableKey={PUBLISHABLE_KEY}
-          afterSignOutUrl="/"
-        >
+        <ClerkProvider localization={ptBR} publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
           <App />
         </ClerkProvider>
       </QueryProvider>
