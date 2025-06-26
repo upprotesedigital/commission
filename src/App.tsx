@@ -1,15 +1,24 @@
-import './App.css'
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
+// App.tsx
+import { Routes, Route } from "react-router-dom";
+import { UserProfile } from "@clerk/clerk-react";
 
-export default function App() {
+
+import { Dashboard, Login } from "./pages";
+
+function App() {
   return (
-    <header>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </header>
-  )
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/Login" element={<Login />} />
+
+      {/* Protected Route */}
+      <Route index element={<Dashboard />} />
+      <Route path="/" element={<Dashboard />} />
+
+      {/* Clerk pages */}
+      <Route path="/user/*" element={<UserProfile />} />
+    </Routes>
+  );
 }
+
+export default App;
