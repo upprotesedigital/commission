@@ -1,27 +1,35 @@
 // App.tsx
 import { Routes, Route } from "react-router-dom";
-import { UserProfile } from "@clerk/clerk-react";
+import { SignIn, UserProfile } from "@clerk/clerk-react";
 
 import { Dashboard, Login } from "./_root/pages";
 import AuthLayout from "./_auth/AuthLayout";
 import RootLayout from "./_root/RootLayout";
+import ProtectedRoute from "./lib/components/ProtectedRoute"; // Import the new component
+import SignInForm from "./_auth/forms/SignInForm";
 
 function App() {
   return (
     <Routes>
-      {/* Public Routes --WHERE USER IS NOT AUTHENTICATED YET */}
-      <Route element={<AuthLayout/>}>
+      {/* Public Routes */}
+      <Route element={<AuthLayout />}>
         <Route path="/Login" element={<Login />} />
-
-      </Route>
-      <Route element={<RootLayout/>}>
-      {/* Protected Route WHERE USER IS AUTHENTICATED*/}
-        <Route index element={<Dashboard />} />
-
+        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/signinform" element={<SignInForm />} />
       </Route>
 
-      {/* Clerk pages */}
-      <Route path="/user/*" element={<UserProfile />} />
+      {/* Protected Routes */}
+      <Route element={<ProtectedRoute />}> {/* Wrap protected routes */}
+        <Route element={<RootLayout />}>
+          <Route index element={<Dashboard />} />
+        </Route>
+
+        {/* Clerk's built-in UserProfile page, also protected by default by Clerk */}
+        <Route path="/user/*" element={<UserProfile />} />
+
+        {/* For example, a dedicated user profile route under RootLayout if needed */}
+        {/* <Route path="/settings" element={<SettingsPage />} /> */}
+      </Route>     
     </Routes>
   );
 }
