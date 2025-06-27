@@ -5,7 +5,7 @@ import { SignIn, UserProfile } from "@clerk/clerk-react";
 import { Dashboard, Login } from "./_root/pages";
 import AuthLayout from "./_auth/AuthLayout";
 import RootLayout from "./_root/RootLayout";
-import ProtectedRoute from "./lib/components/ProtectedRoute"; // Import the new component
+import ProtectedRoute from "./lib/components/ProtectedRoute";
 import SignInForm from "./_auth/forms/SignInForm";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       </Route>
 
       {/* Protected Routes */}
-      <Route element={<ProtectedRoute />}> {/* Wrap protected routes */}
+      <Route element={<ProtectedRoute />}>
         <Route element={<RootLayout />}>
           <Route index element={<Dashboard />} />
         </Route>

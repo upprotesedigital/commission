@@ -55,11 +55,20 @@ button:focus-visible {
 }
 .dashboard {
   min-height: 100vh;
+  min-width: 100vw;
   display: flex;
   flex-direction: column;
   background-color: #f8f9fa;
 }
-
+.authLayout {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #333;
+}
 .dashboard-header {
   background-color: white;
   border-bottom: 1px solid #e9ecef;
@@ -85,7 +94,17 @@ button:focus-visible {
   font-size: 1.5rem;
   font-weight: 600;
 }
-
+.login-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.clerk-auth {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-top: 1rem;
+  text-align: center;
+}
 .dashboard-main {
   flex: 1;
   padding: 2rem;
