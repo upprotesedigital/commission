@@ -37,9 +37,9 @@ const SignInForm = () => {
       </section>
 
       <img
-        src="/side-image.jpg"
+        src="/side-image.pngs"
         alt="logo"
-        className="hidden xl:block h-screen w-1/2 object-cover bg-no-repeat pointer-events-none"
+        className="img hidden xl:block h-screen w-1/2 object-cover bg-no-repeat pointer-events-none"
       />
     </>
   );

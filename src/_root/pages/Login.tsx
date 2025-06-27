@@ -1,4 +1,5 @@
-import { SignedOut, SignInButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -27,7 +28,10 @@ const Login = () => {
             Sign in to access your dashboard
           </p>
         </div>
-        
+        <SignedIn>
+          {/* If the user is signed in, navigate to the home page */}
+          <Navigate to="/" />
+        </SignedIn>
         <SignedOut>
           <div className="space-y-6 flex flex-col items-center w-full">
             <div className="flex justify-center w-full">
@@ -50,7 +54,7 @@ const Login = () => {
                 </button>
               </SignInButton>
             </div>
-            
+
             <div>
               <p className="text-xs text-gray-500">
                 🔒 Secure authentication powered by Clerk
